@@ -46,7 +46,7 @@ const coreValues = [
         description: "Kepercayaan adalah fondasi kami. Transparansi dan kejujuran adalah kunci dalam setiap proyek."
     }
 ];
-
+//test
 const useAnimateOnScroll = (threshold = 0.1) => {
     const elementRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
