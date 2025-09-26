@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import rinoImage from '../assets/Pictures/Rino.png';
 import pujaImage from '../assets/Pictures/Puja.png';
-
+//test
 const teamMembers = [
     {
         name: "Puja Ayu Miswari",
