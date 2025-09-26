@@ -11,19 +11,21 @@ import {
     Linkedin,
     Twitter
 } from 'lucide-react';
+import rinoImage from '../assets/Pictures/Rino.png';
+import pujaImage from '../assets/Pictures/Puja.png';
 
 const teamMembers = [
     {
         name: "Puja Ayu Miswari",
         role: "Founder & CEO",
         bio: "Visioner di balik Ayno, memimpin dengan inovasi dan semangat untuk membantu klien bertumbuh.",
-        image: "https://placehold.co/400x400/E2E8F0/4A5568?text=CEO"
+        image: pujaImage
     },
     {
         name: "Aderino Arya Nanda",
         role: "Head of Business Developer",
         bio: "Membangun jembatan strategis dan membuka peluang baru untuk pertumbuhan bisnis Anda bersama kami.",
-        image: "https://placehold.co/400x400/E2E8F0/4A5568?text=Business+Developer"
+        image: rinoImage
     }
 ];
 
@@ -138,7 +140,7 @@ const AboutUsPage = () => {
                         {teamMembers.map((member, index) => (
                             <div key={index} className={`text-center transition-all duration-700 ease-out ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 150}ms` }}>
                                 <div className="relative group max-w-xs mx-auto">
-                                    <img src={member.image} alt={member.name} className="rounded-2xl w-full h-auto mb-6 shadow-lg" />
+                                    <img src={member.image} alt={member.name} className="rounded-2xl w-full h-96 object-cover object-center mb-6 shadow-lg" />
                                     <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-60 transition-all duration-300 rounded-2xl flex items-center justify-center">
                                         <div className="flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                             <a href="#" className="text-white hover:text-blue-400"><Linkedin size={24} /></a>
@@ -162,7 +164,7 @@ const AboutUsPage = () => {
                         <Sparkles className="absolute -bottom-8 -right-0 w-32 h-32 text-white opacity-20 transform -rotate-12" />
                         <h2 className="text-4xl md:text-5xl font-bold mb-5">Mari Wujudkan Sesuatu yang Hebat Bersama.</h2>
                         <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-10">
-                           Siap untuk memulai proyek Anda berikutnya? Hubungi kami untuk konsultasi gratis dan mari kita diskusikan bagaimana kami dapat membantu Anda.
+                            Siap untuk memulai proyek Anda berikutnya? Hubungi kami untuk konsultasi gratis dan mari kita diskusikan bagaimana kami dapat membantu Anda.
                         </p>
                         <Link to="/contact" className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-100 transition-all duration-300 shadow-lg transform hover:scale-110">
                             Mulai Proyek Anda
@@ -175,4 +177,3 @@ const AboutUsPage = () => {
 };
 
 export default AboutUsPage;
-

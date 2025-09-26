@@ -41,11 +41,11 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li className="flex items-start">
                                 <MapPin className="w-5 h-5 mr-3 mt-1 text-indigo-400 flex-shrink-0" />
-                                <span className="text-slate-400">Jl. Contoh Alamat No. 123, Jakarta, Indonesia</span>
+                                <span className="text-slate-400">Jl. Jaksa Agung Suprapto 2B/275b, Malang, Jawa Timur</span>
                             </li>
                             <li className="flex items-center">
                                 <Mail className="w-5 h-5 mr-3 text-indigo-400 flex-shrink-0" />
-                                <a href="mailto:info@aynoglobal.com" className="text-slate-400 hover:text-white transition-colors">info@aynoglobal.com</a>
+                                <a href="mailto:info@aynoglobal.com" className="text-slate-400 hover:text-white transition-colors">admin@aynoglobalsupport.site</a>
                             </li>
                         </ul>
                     </div>
