@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -20,11 +20,16 @@ const Navbar = () => {
         setIsOpen(false);
     };
 
+    // Efek untuk mencegah scrolling body saat menu mobile terbuka
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen]);
+
     // Style untuk NavLink yang aktif
-    const activeLinkStyle = {
-        color: '#1d4ed8', // blue-700
-        fontWeight: '600'
-    };
+    const activeLinkClass = "text-red-800 font-bold";
 
     return (
         <>
@@ -35,20 +40,22 @@ const Navbar = () => {
                     </Link>
                     
                     {/* Menu Desktop */}
-                    <div className="hidden md:flex items-center space-x-10">
+                    <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
                         {navLinks.map((link) => (
                              <NavLink 
-                                key={link.name} 
-                                to={link.path} 
-                                className="text-slate-600 hover:text-blue-600 font-medium transition-colors duration-300 relative group"
-                                style={({ isActive }) => isActive ? activeLinkStyle : undefined}
+                                 key={link.name} 
+                                 to={link.path} 
+                                 className={({ isActive }) => 
+                                     `text-slate-700 hover:text-blue-600 font-medium transition-colors duration-300 relative group text-base ${isActive ? activeLinkClass : ''}`
+                                 }
                              >
                                  {link.name}
-                                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
+                                 {/* Underline effect */}
+                                 <span className="absolute bottom-[-5px] left-0 w-full h-0.5 bg-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></span>
                              </NavLink>
                         ))}
                     </div>
-                    <Link to="/contact" className="hidden md:inline-block bg-red-800 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-red-900 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <Link to="/contact" className="hidden md:inline-block bg-red-800 text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-red-900 transition-all duration-300 transform hover:scale-105 shadow-md">
                         Contact Us
                     </Link>
                     
@@ -61,26 +68,45 @@ const Navbar = () => {
                 </nav>
             </header>
 
-            {/* Overlay Menu Mobile */}
-            <div className={`md:hidden fixed inset-0 bg-white z-40 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
-                <div className="flex flex-col items-center justify-center h-full space-y-10">
-                    {navLinks.map((link) => (
-                         <NavLink 
-                            key={link.name} 
-                            to={link.path} 
-                            className="text-4xl text-slate-800 hover:text-blue-600 font-semibold"
-                            onClick={handleLinkClick}
-                            style={({ isActive }) => isActive ? activeLinkStyle : undefined}
-                         >
-                             {link.name}
-                         </NavLink>
-                    ))}
-                     <Link 
+            {/* Side-Drawer Menu Mobile */}
+            {isOpen && (
+                // Backdrop Overlay
+                <div onClick={toggleMenu} className="fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+            )}
+            
+            <div className={`md:hidden fixed top-0 right-0 h-full w-64 bg-white shadow-xl z-50 transform ${isOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out`}>
+                <div className="p-6 flex flex-col h-full">
+                    {/* Header Drawer */}
+                    <div className="flex justify-between items-center pb-6 border-b border-slate-100 mb-6">
+                        <span className="text-2xl font-bold text-slate-900">Menu</span>
+                        <button onClick={toggleMenu} className="text-slate-600 hover:text-red-800">
+                            <X size={24} />
+                        </button>
+                    </div>
+
+                    {/* Nav Links - Smaller text, proper padding */}
+                    <div className="flex flex-col space-y-4 flex-grow">
+                        {navLinks.map((link) => (
+                             <NavLink 
+                                 key={link.name} 
+                                 to={link.path} 
+                                 className={({ isActive }) => 
+                                     `text-xl text-slate-700 hover:text-blue-600 font-medium py-2 transition-colors duration-300 ${isActive ? activeLinkClass : ''}`
+                                 }
+                                 onClick={handleLinkClick}
+                             >
+                                 {link.name}
+                             </NavLink>
+                        ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <Link 
                         to="/contact" 
-                        className="bg-red-800 text-white mt-6 px-10 py-4 rounded-full font-semibold text-lg"
+                        className="bg-red-800 text-white mt-8 w-full text-center px-4 py-3 rounded-xl font-semibold text-base hover:bg-red-900 transition-all duration-300 shadow-lg"
                         onClick={handleLinkClick}
-                     >
-                         Contact Us
+                    >
+                        Contact Us
                     </Link>
                 </div>
             </div>
@@ -89,4 +115,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

@@ -180,7 +180,7 @@ const ServicesPage = () => {
             <section className="py-24 md:py-32 bg-slate-50 relative h-[60vh] md:h-[70vh] flex items-center">
                 <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0"></canvas>
                 <div className="container mx-auto px-6 text-center relative z-10">
-                    <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 leading-tight mb-6 animate-fade-in-down">
+                    <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight mb-6 animate-fade-in-down">
                         Layanan <span className="bg-gradient-to-r from-blue-600 to-red-800 bg-clip-text text-transparent">Komprehensif</span> Kami
                     </h1>
                     <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-10 animate-fade-in-up">
@@ -207,14 +207,17 @@ const ServicesPage = () => {
             
             <section className="py-20 bg-slate-50">
                 <div className="container mx-auto px-6">
-                    <div className="bg-gradient-to-r from-blue-600 to-red-800 rounded-3xl shadow-2xl p-12 md:p-20 text-center text-white relative overflow-hidden">
+                    <div className="bg-gradient-to-r from-blue-600 to-red-800 rounded-3xl shadow-2xl p-8 md:p-16 lg:p-20 text-center text-white relative overflow-hidden">
                         <Sparkles className="absolute -top-4 -left-4 w-24 h-24 text-white opacity-20 transform rotate-12" />
                         <Sparkles className="absolute -bottom-8 -right-0 w-32 h-32 text-white opacity-20 transform -rotate-12" />
-                        <h2 className="text-4xl md:text-5xl font-bold mb-5">Punya Pertanyaan?</h2>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5">Punya Pertanyaan?</h2>
                         <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-10">
                            Tim kami siap membantu menjawab pertanyaanmu dan mendiskusikan kebutuhan proyekmu lebih lanjut.
                         </p>
-                        <Link to="/contact" className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-100 transition-all duration-300 shadow-lg transform hover:scale-110">
+                        <Link 
+                            to="/contact" 
+                            className="inline-block bg-white text-blue-600 px-6 md:px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-100 transition-all duration-300 shadow-lg transform hover:scale-110 whitespace-nowrap"
+                        >
                             Hubungi Kami Sekarang
                         </Link>
                     </div>
